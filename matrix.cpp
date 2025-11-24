@@ -48,7 +48,7 @@ double** matrix_make(int k, int n){
     if(k==3){
         for(int i=0; i<n; i++){
             for(int j=0; j<n; j++){
-                A[i][j]=abs(i+1-j-1);
+                A[i][j]=std::abs(i+1-j-1);
             }
         }
     }  
@@ -94,3 +94,4 @@ double** matrix_read(const char* f, int n){
     file.close();
     return A;
 }
+	
