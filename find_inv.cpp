@@ -2,7 +2,7 @@
 #include <iostream>
 #include <algorithm>
 
-void inverse(int n, double** A, double** invA) {
+bool inverse(int n, double** A, double** invA) {
     
     for (int i=0; i < n; i++){
         
@@ -32,11 +32,10 @@ void inverse(int n, double** A, double** invA) {
             }
         }
         
-        if (max<1e-15){
+        if (max<1e-20){
             std::cerr << "Матрица вырождена" << std::endl;
-            invA = nullptr;
             delete[] perm;
-            return;
+            return false;
         }
         
         for (int j=0; j<n; j++){ // меняю местами строки в обеих матрицах
@@ -75,4 +74,5 @@ void inverse(int n, double** A, double** invA) {
     }
     
     delete[] perm;
+    return true; 
 }
